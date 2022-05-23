@@ -1,9 +1,13 @@
 package tests;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -11,7 +15,7 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.LoginPage;
 
-public class LoginTests {
+public class LoginTests  {
 	public static WebDriver driver;
 	LoginPage lp;
 
@@ -35,10 +39,12 @@ public class LoginTests {
 	@Test
 	public void login() throws InterruptedException {
 
-		lp.login("Admin", "admin123");
+		lp.login("Admin", "admin456");
+		Assert.assertFalse(true);
 
 	}
 
+	@AfterMethod
 	@AfterClass
 	public void tearDown() {
 		driver.close();
